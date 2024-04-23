@@ -1,4 +1,4 @@
-package dev.mambo.play.navigate.screens
+package dev.mambo.play.navigate.list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import dev.mambo.play.navigate.navigation.Destinations
 
 /**
  * project : Navigate
@@ -24,7 +22,7 @@ import dev.mambo.play.navigate.navigation.Destinations
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListScreen(navController: NavController) {
+fun ListScreen(onClickItem: (Int) -> Unit) {
     Scaffold(topBar = { TopAppBar(title = { Text(text = "Navigate") }) }) {
         Column(
             modifier = Modifier
@@ -37,7 +35,7 @@ fun ListScreen(navController: NavController) {
                         modifier = Modifier
                             .padding(8.dp)
                             .fillParentMaxWidth(),
-                        onClick = { navController.navigate(Destinations.Detail(id = it).route) }
+                        onClick = { onClickItem.invoke(it) }
                     ) {
                         Text(modifier = Modifier.padding(16.dp), text = "$it", fontSize = 24.sp)
                     }

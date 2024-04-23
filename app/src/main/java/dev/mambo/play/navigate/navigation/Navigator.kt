@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import dev.mambo.play.navigate.screens.ListDetailScreen
-import dev.mambo.play.navigate.screens.ListScreen
+import dev.mambo.play.navigate.list.ListScreen
+import dev.mambo.play.navigate.listdetail.ListDetailScreen
 
 /**
  * project : Navigate
@@ -26,14 +26,14 @@ fun Navigator() {
 
         // TODO : 8 - for each destination, add a route and the composable to show
         composable(route = Destinations.List.route) {
-            ListScreen(navController = navController)
+            ListScreen(onClickItem = { navController.navigate(Destinations.Detail(id = it).route) })
         }
         composable(
             route = Destinations.Detail.route,
             arguments = listOf(navArgument(Destinations.Detail.KEY) { type = NavType.IntType })
         ) {
             val id: Int? = it.arguments?.getInt(Destinations.Detail.KEY)
-            ListDetailScreen(id = id, navController = navController)
+            ListDetailScreen(id = id, onClickNavigateBack = { navController.popBackStack() })
         }
     }
 }

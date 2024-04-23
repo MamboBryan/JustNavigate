@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google {
@@ -21,4 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Navigate"
 include(":app")
- 
+include(":features")
+include(":features:list")
+include(":features:listdetail")

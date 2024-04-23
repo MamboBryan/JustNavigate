@@ -1,4 +1,4 @@
-package dev.mambo.play.navigate.screens
+package dev.mambo.play.navigate.listdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 /**
  * project : Navigate
@@ -30,11 +29,11 @@ import androidx.navigation.NavController
 @Composable
 fun ListDetailScreen(
     id: Int?,
-    navController: NavController
+    onClickNavigateBack: () -> Unit,
 ) {
     Scaffold(topBar = {
         TopAppBar(navigationIcon = {
-            IconButton(onClick = { navController.popBackStack() }) {
+            IconButton(onClick = onClickNavigateBack) {
                 Icon(imageVector = Icons.Rounded.ArrowBack, contentDescription = "navigate back")
             }
         }, title = { Text(text = "Detail") })
